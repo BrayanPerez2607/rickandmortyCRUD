@@ -1,9 +1,8 @@
 import { View, Image, Text } from "react-native";
 import styles from "../styles/CharacterStyles";
-import { useNavigation } from "@react-navigation/native";
+
 
 export default function CharacterCard ({character}) {
-    const navigation = useNavigation();
     return (
 
         <View style={styles.card}>
