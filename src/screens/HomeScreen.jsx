@@ -3,6 +3,7 @@ import { ActivityIndicator, ScrollView, Text, TouchableOpacity, Image, View, But
 import { fetchCharacters } from "../api/rickAndMortyApi";
 import styles from "../styles/CharacterStyles";
 import CharacterListScreen from "./CharacterListScreen";
+import CharacterDetailScreen from "./CharacterDetailScreen";
 
 export default function HomeScreen ({}) {
     const [characters, setCharacters] = useState([]);
@@ -34,6 +35,10 @@ export default function HomeScreen ({}) {
         setCharacters(characters.filter((c) => c.id !== id));
     };
 
+    const addCharacter = (character) => {
+      setUsers([...characters, {...character, id: Date.now()}])
+    }
+
     return (
 
         <ScrollView contentContainerStyle={styles.container}>
@@ -43,7 +48,7 @@ export default function HomeScreen ({}) {
             ):
             <View>
                 <View style={{ flexDirection: 'row', gap: 10, marginBottom: 20, justifyContent: 'center' }}>
-                    <Button title="Create" color={'blue'} />
+                    <CharacterDetailScreen addCharacter={addCharacter}/>
                     <Button title="Edit" color={'blue'}/>
                     <CharacterListScreen characters={characters} deleteCharacter={deleteCharacter}/>
 
