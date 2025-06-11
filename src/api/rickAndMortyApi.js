@@ -1,14 +1,10 @@
-export const BASE_URL = 'https://rickandmortyapi.com/api/character/';
+export const BASE_URL = 'https://rickandmortyapi.com/api/character?page=1';
 
-export async function fetchCharacters (page = 1, status = '') {
+export async function fetchCharacters () {
     
     try {
 
-        let url = `${BASE_URL}?page=${page}`;
-        if (status) {
-            url += `&status=${status}`;
-        }
-        const response = await fetch(url);
+        const response = await fetch(BASE_URL);
         const data = await response.json();
         return data;
 
@@ -21,15 +17,3 @@ export async function fetchCharacters (page = 1, status = '') {
 
 }
 
-export async function fetchLocation(url) {
-    
-    try {
-        const response = await fetch(`${url}`);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error fetching data: ', error);
-        throw error;
-    }
-
-}
