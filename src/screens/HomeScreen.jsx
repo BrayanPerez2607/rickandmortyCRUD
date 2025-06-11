@@ -4,14 +4,10 @@ import { fetchCharacters } from "../api/rickAndMortyApi";
 import styles from "../styles/CharacterStyles";
 
 export default function HomeScreen () {
-
     const [characters, setCharacters] = useState([]);
     const [loading, setLoading] = useState(true);
-
     const loadCharacters = async () => {
-
         setLoading(true);
-
         try {
             
             const data = await fetchCharacters();
